@@ -21,5 +21,5 @@ def dataSelection(raw_dataset):
 	#Choose useful columns in dataset. The raw_dataset is in pandas DataFrame type.
 
 
-def handleProblematicData():
+def handleProblematicData(raw_dataset):
 	

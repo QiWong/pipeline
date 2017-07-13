@@ -23,18 +23,24 @@ class  PipeLine:
 		#Will generate a heatmap visualizing correlation coefficient matrix.
 		dR.visualizeCorrMatrix(self.corrCof())
 
+	def pca(self):
+		self.data_frame_pca = dR.pcaAnalysis(self.data_frame)
+
 
 def main(argv):
 	if not argv:
-		#Temporarily we use mpMRI_FeatureList_CQ.csv
+		'''Temporarily we use mpMRI_FeatureList_CQ.csv'''
 		#print "The file name is empty";
 		argv.append('mpMRI_FeatureList_CQ.csv')
 		pipeline = PipeLine(argv[0])
-		
+
 		'''There are five columns in the mpMRI_FeatureList_CQ dataset that we won't use in our learning phase.
 		Then we delete these five columns from the dataset'''
-		unused_columns = ['StudyDate','PSA','Gleason','Location','PIRADS']
-		pipeline.dropColumns(unused_columns)		
+		unused_columns = ['StudyDate','PSA','Gleason','Location','PIRADS','Risk']
+		pipeline.dropColumns(unused_columns)
+
+		'''Do PCA analysis to reduce the dimensionality.'''
+		pipeline.pca()		
 	else:
 		print "The file name is "+argv[0]
 

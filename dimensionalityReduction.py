@@ -19,3 +19,12 @@ def visualizeCorrMatrix(corr_matrix):
 	sns.heatmap(corr_matrix, cmap=cmap, vmax=.3, center=0,square=True,xticklabels=False,yticklabels=False, linewidths=.5)
 	plt.title("Correlation Coefficient")
 	plt.savefig('CorrelationCoefficient.png')
+
+def pcaAnalysis(dataset):
+	'''dataset: in pandas DataFrame type
+	This function makes PCA analysis'''
+	pca = PCA()
+	dataset = dataset.astype(float)
+	dataset2 = pca.fit_transform(dataset)
+	print dataset2.shape
+	return dataset2

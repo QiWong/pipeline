@@ -3,6 +3,7 @@
 #!/usr/bin/python
 
 import dataLoading
+import dimensionalityReduction as dR
 import sys
 
 #file_name is the name of the file which stores the dataset
@@ -14,6 +15,15 @@ class  PipeLine:
 	def dropColumns(self, col_name_list):
 		self.data_frame = dataLoading.dropColumns(self.data_frame, col_name_list)
 
+	def corrCof(self):
+		#call function in dimensionalityReduction to calculate correlation between columns.
+		return dR.standardCorrCoefficient(self.data_frame)
+
+	def visualizeCorr(self):
+		#Will generate a heatmap visualizing correlation coefficient matrix.
+		dR.visualizeCorrMatrix(self.corrCof())
+
+
 def main(argv):
 	if not argv:
 		#Temporarily we use mpMRI_FeatureList_CQ.csv
@@ -24,8 +34,7 @@ def main(argv):
 		'''There are five columns in the mpMRI_FeatureList_CQ dataset that we won't use in our learning phase.
 		Then we delete these five columns from the dataset'''
 		unused_columns = ['StudyDate','PSA','Gleason','Location','PIRADS']
-		pipeline.dropColumns(unused_columns)
-		
+		pipeline.dropColumns(unused_columns)		
 	else:
 		print "The file name is "+argv[0]
 

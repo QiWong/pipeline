@@ -41,7 +41,7 @@ class  PipeLine:
 	def classify(self):
 		self.data_frame = crossValidation.normalizeData(self.data_frame)
 		ML.CSupportVectorClassify(self.data_frame, self.target)
-
+		#ML.decisionTreeClassify(self.data_frame, self.target)
 
 def main(argv):
 	if not argv:
@@ -59,6 +59,7 @@ def main(argv):
 		pipeline.setTarget('Risk')
 
 		'''Do PCA analysis to reduce the dimensionality.'''
+		'''Doesn't affect the result, why?'''
 		#pipeline.pca()
 
 		'''Use Machine Learning algorithm to predict result.'''

@@ -9,7 +9,6 @@ import crossValidation as CV
 import numpy
 import overSampling
 
-#file_name is the name of the file which stores the dataset
 class  PipeLine:
 	def __init__(self, file_name):
 		#We assume the first column of the dataset is the index column, which will not be used in our learning phase.

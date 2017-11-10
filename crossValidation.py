@@ -22,7 +22,7 @@ def decisionTreeCrossValidate(X, Y):
 	print("Estimated Accuracy of Decision Tree Classifier is: " , accuracy)
 	return accuracy
 
-def CSupportVectorClassify(X, Y):
+def CSupportVectorCrossValidate(X, Y):
 	'''
 	Estimate the accuracy of the C-Support Vector Classification. using k-fold cross validation.
 	'''
@@ -36,7 +36,7 @@ def CSupportVectorClassify(X, Y):
 	print("Estimated Accuracy of C-Support Vector is: " , accuracy)
 	return accuracy
 
-def linearSVMClassify(X, Y):
+def linearSVMCrossValidate(X, Y):
 	'''Estimate the accuracy of the Linear Support Vector Classification'''
 	linearsvc = svm.LinearSVC(random_state=0)
 	k_value = 5
@@ -46,7 +46,7 @@ def linearSVMClassify(X, Y):
 	return accuracy
 
 
-def RfClassify(X, Y):
+def RfCrossValidate(X, Y):
 	'''Estimate the accuracy of the Random Forest Classification'''
 	rf_class = RandomForestClassifier(n_estimators=10)
 	print("Random Forests: ")

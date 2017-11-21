@@ -13,7 +13,7 @@ def decisionTreeCrossValidate(X, Y):
 	Estimate the accuracy of the decision tree using k-fold cross validation.
 	'''
 	k_value = 5
-	'''k_value is the value of k in the k-fold cross validation. Let k equal to 5'''.
+	'''k_value is the value of k in the k-fold cross validation. Let k equal to 5'''
 	
 	decision_tree = DecisionTreeClassifier()
 	workers = -1 #This will prevent using all your CPU power
@@ -41,7 +41,7 @@ def linearSVMCrossValidate(X, Y):
 	linearsvc = svm.LinearSVC(random_state=0)
 	k_value = 5
 	workers = -1 # this will use all your CPU power
-	accuracy = cross_val_score(svc, X, Y, scoring='accuracy', cv = k_value, n_jobs=workers).mean()
+	accuracy = cross_val_score(linearsvc, X, Y, scoring='accuracy', cv = k_value, n_jobs=workers).mean()
 	print("Estimated Accuracy of Linear Support Vector is: " , accuracy)
 	return accuracy
 

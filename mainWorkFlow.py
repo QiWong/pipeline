@@ -13,6 +13,7 @@ class  PipeLine:
 	def __init__(self, file_name):
 		#We assume the first column of the dataset is the index column, which will not be used in our learning phase.
 		self.all_data = dataLoading.readFile(file_name, 0)
+		self.features_data = self.all_data
 
 	def dropColumns(self, col_name_list):
 		self.all_data = dataLoading.dropColumns(self.features_data, col_name_list)
@@ -51,12 +52,12 @@ class  PipeLine:
 
 	def crossValidate(self):
 		'''Estimate the accuracy of machine learning algorithms using cross validation.'''
-		self.features_data = self.asarray(self.features_data)
-		self.target = self.asarray(self.target)
+		self.features_data = numpy.asarray(self.features_data)
+		self.target = numpy.asarray(self.target)
 		
 		CV.decisionTreeCrossValidate(self.features_data, self.target)
-		CV.CSupportVectorClassify(self.features_data, self.target)
-		CV.linearSVMClassify(self.features_data, self.target)
+		CV.CSupportVectorCrossValidate(self.features_data, self.target)
+		CV.linearSVMCrossValidate(self.features_data, self.target)
 		
 
 def main():
@@ -87,6 +88,6 @@ def main():
 		
 
 if __name__ == "__main__":
-	main(sys.argv[1:])
+	main()
 	pass
 
